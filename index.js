@@ -81,6 +81,33 @@ const parser = async () => {
     });
   };
 
+  (function() {
+    if (!fs.existsSync(__dirname + '/zip')){
+      fs.mkdir('zip', err => {
+        if(err) throw err; // не удалось создать папку
+        console.log('Папка успешно создана');
+      });
+    }
+    if (!fs.existsSync(__dirname + '/xml')){
+      fs.mkdir('xml', err => {
+        if(err) throw err; // не удалось создать папку
+        console.log('Папка успешно создана');
+      });
+    }
+    if (!fs.existsSync(__dirname + '/decoder')){
+      fs.mkdir('decoder', err => {
+        if(err) throw err; // не удалось создать папку
+        console.log('Папка успешно создана');
+      });
+    }
+    if (!fs.existsSync(__dirname + '/result')){
+      fs.mkdir('result', err => {
+        if(err) throw err; // не удалось создать папку
+        console.log('Папка успешно создана');
+      });
+    }
+  })();
+
     // основная функция 
     try {
       const res = await fetch('http://www.cbr.ru/s/newbik');
@@ -145,7 +172,7 @@ const parser = async () => {
                   continue;
                 }
                 const accArr = Array.from(curAccount);
-                
+
                 if (accArr.length != 0) {
                   for (let j = 0; j < accArr.length; j++) {
                     let accAtribute = accArr[j].getAttribute('Account');
